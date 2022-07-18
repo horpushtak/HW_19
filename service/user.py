@@ -44,6 +44,6 @@ class UserService:
         """Декодируем хэшированный пароль и сравниваем с тем,
          что прислал пользователь, оборачивая в хэш.
         Cравнивает циферки, тут надо аккуратно"""
-        hmac.compare_digest(base64.b64decode(password_hash), base64.b64decode(self.get_password_hash(password)))
+        return hmac.compare_digest(base64.b64decode(password_hash), base64.b64decode(self.get_password_hash(password)))
 
 

@@ -29,11 +29,11 @@ class AuthView(Resource):
 
     def put(self):
         req_json = request.json
-        refresh_token = req_json.get('refresh_token')
+        refresh_token = req_json.get('refresh_token')  # Принимаем refresh именно в теле запроса, а не в заголовке
         if not refresh_token:
             return "Токен на задан", 401
 
-        tokens = auth_service.approve_refresh_token(refresh_token)
+        tokens = auth_service.approve_refresh_token(refresh_token)  # Перегенерирует пару
         if tokens:
             return tokens
         else:

@@ -115,3 +115,13 @@ Content-Type: application/json
   "username": "test",
   "password": "test"
 }
+
+###
+
+DELETE http://127.0.0.1:10001/users/5
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "5"
+}

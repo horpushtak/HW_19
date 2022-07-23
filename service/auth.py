@@ -32,16 +32,16 @@ class AuthService:
 
         min30 = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
         data['exp'] = calendar.timegm(min30.timetuple())  # Дописали в дату ещё значение exp
-        asses_token = jwt.encode(data, JWT_SECRET, algorithm=JWT_ALG)
+        asses_token = jwt.encode(data, JWT_SECRET, algoritm=JWT_ALG)
 
         day30 = datetime.datetime.utcnow() + datetime.timedelta(days=30)
         data['exp'] = calendar.timegm(day30.timetuple())
-        refresh_token = jwt.encode(data, JWT_SECRET, algorithm=JWT_ALG)
+        refresh_token = jwt.encode(data, JWT_SECRET, algoritm=JWT_ALG)
 
         return {'asses_token': asses_token, 'refresh_token': refresh_token}
 
     def approve_refresh_token(self, refresh_token):
-        data = jwt.decode(refresh_token, JWT_SECRET, algorithms=[JWT_ALG])  # в decode только во мн. ч.
+        data = jwt.decode(refresh_token, JWT_SECRET, algoritms=[JWT_ALG])  # в decode только во мн. ч.
         username = data['username']  # Вытаскиваем имя
         user = self.user_service.get_by_username(username)  # Проверяем, есть ли такой с хорошим токеном
 
